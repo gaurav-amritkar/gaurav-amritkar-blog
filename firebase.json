@@ -7,7 +7,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/gaurav-amritkar-blog",
+    "public": "gaurav-amritkar-blog",
     "ignore": [
       "firebase.json",
       "**/.*",
