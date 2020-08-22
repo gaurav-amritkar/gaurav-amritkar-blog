@@ -11,13 +11,17 @@
           <h2>{{ post.title}} </h2>
         </a>
       </mat-card-content>
+      <mat-card-subtitle class="blog-info">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{post.createdDate | date:'longDate'}}
+        <i class="fa fa-user" aria-hidden="true"></i> {{post.author}}
+      </mat-card-subtitle>
       <mat-card-content>
         <div [innerHTML]="post.content | excerpt"></div>
       </mat-card-content>
       <!-- <mat-divider></mat-divider> -->
       <mat-card-actions align="end">
         <ng-container *ngIf="appUser?.isAdmin">
-          <button mat-stroked-button color="accent" [routerLink]="['/editpost',post.postId]">Edit</button>
+          <button mat-stroked-button [routerLink]="['/editpost',post.postId]">Edit</button>
           <button mat-stroked-button color="warn" (click)="delete(post.postId)">Delete</button>
         </ng-container>
         <span class="spacer"></span>

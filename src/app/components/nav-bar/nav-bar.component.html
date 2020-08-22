@@ -1,5 +1,5 @@
 <mat-toolbar class="nav-bar mat-elevation-z2">
-  <button mat-button [routerLink]='["/"]'> Home </button>
+  <button mat-stroked-button [routerLink]='["/"]'> Home </button>
   <!-- <ng-container *ngIf="appUser">
     <button mat-button [routerLinkActive]='["link-active"]' [routerLink]='["/addpost"]'>
       Add Post
@@ -7,18 +7,18 @@
   </ng-container> -->
   <span class="spacer"></span>
   <ng-template #anonymousUser>
-    <button mat-button (click)="login()">Login with Google</button>
+    <button mat-stroked-button (click)="login()">Login with Google</button>
   </ng-template>
   <ng-container *ngIf="appUser; else anonymousUser">
-    <img mat-card-avatar class="user-avatar" src={{appUser.photoURL}}>
-    <button mat-button [matMenuTriggerFor]="menu">
+    <img mat-card-avatar class="user-avatar" src={{appUser.photoURL}} style="margin-right:11px">
+    <button mat-stroked-button [matMenuTriggerFor]="menu">
       {{appUser.name}}<mat-icon>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)=logout()>Logout</button>
       <button mat-menu-item [routerLinkActive]='["link-active"]' [routerLink]='["/addpost"]'>
         Add Post
       </button>
+      <button mat-menu-item (click)=logout()>Logout</button>
     </mat-menu>
   </ng-container>
 </mat-toolbar>
