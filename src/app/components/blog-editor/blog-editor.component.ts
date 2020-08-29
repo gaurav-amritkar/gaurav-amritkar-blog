@@ -8,6 +8,7 @@ import { AppUser } from 'src/app/models/appuser';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MyUploadAdapter } from './MyUploadAdapter';
 
 @Component({
   selector: 'app-blog-editor',
@@ -25,7 +26,8 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
   appUser: AppUser;
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private datePipe: DatePipe,
     private blogService: BlogService,
     private router: Router,
@@ -72,9 +74,17 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  MyCustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+      // Configure the URL to the upload script in your back-end here!
+      return new MyUploadAdapter(loader);
+    };
+  }
+
   setEditorConfig() {
     this.ckeConfig = {
       // removePlugins: ['ImageUpload', 'MediaEmbed'],
+      extraPlugins: [this.MyCustomUploadAdapterPlugin],
       heading: {
         options: [
           { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },

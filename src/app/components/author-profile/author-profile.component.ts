@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorProfileComponent implements OnInit {
 
+  appUser = JSON.parse(localStorage.getItem('UserInfo'));
   constructor() { }
 
   ngOnInit() {

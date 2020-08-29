@@ -1,22 +1,22 @@
 <mat-card class="rightpanel-card mat-elevation-z2">
   <mat-card-content>
-    <h4 class="rightdivtext">
+    <h4 class="text-center rightdivtext">
       Author
     </h4>
   </mat-card-content>
   <mat-card-content>
     <div class="authorimagecontainer">
-      <img class="authorimage" mat-card-avatar src="../../../assets/gaurav-amritkar.JPG">
-      <h5>Gaurav Amritkar</h5>
+      <img class="authorimage" mat-card-avatar src={{appUser.photoURL}}>
+      <h5>{{appUser.name}}</h5>
     </div>
   </mat-card-content>
   <mat-divider></mat-divider>
-  <mat-card-content>
+  <mat-card-content class="text-center">
     <h4 class="rightdivtext">
       Follow Me
     </h4>
   </mat-card-content>
-  <mat-card-content>
+  <mat-card-content class="text-center">
     <a href="https://www.facebook.com/gbamritkar" target="_blank"><i class="fa fa-facebook-square"
         aria-hidden="true"></i></a>
     <a href="https://twitter.com/gbamritkar" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
